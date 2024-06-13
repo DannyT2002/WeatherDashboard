@@ -5,11 +5,11 @@ This Weather Dashboard is a responsive web application that provides a 5-day wea
 
 ## Deployed Page Screenshot
 
-![Screenshot of Deployed Application]()
-![Screenshot of Deployed Application]()
+![Screenshot of Deployed Application](./assets/images/WeatherDash%201-2.png)
+![Screenshot of Deployed Application](./assets/images/WeatherDash%202-2.png)
 
 ### Links
 
-[Link to Deployed Website]()
+[Link to Deployed Website](https://dannyt2002.github.io/WeatherDashboard/)
 
-[Link to the code repository]()
+[Link to the code repository](https://github.com/DannyT2002/WeatherDashboard)
