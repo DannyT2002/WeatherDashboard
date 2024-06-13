@@ -22,4 +22,27 @@ function addCityToHistory(city) {
   searchedEl.appendChild(cityButton);
 }
 
+async function getCoordinates(city) {
+  const response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`);
+  const data = await response.json();
+  if (data.length === 0) {
+    alert('City not found');
+    return null;
+  }
+  return { lat: data[0].lat, lon: data[0].lon };
+}
+
+async function getWeatherData(city) {
+  const coordinates = await getCoordinates(city);
+  if (!coordinates) return;
+
+  const { lat, lon } = coordinates;
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
+  const data = await response.json();
+
+  displayCurrentWeather(data);
+  displayForecast(data);
+  saveToHistory(city);
+}
+
 init()
