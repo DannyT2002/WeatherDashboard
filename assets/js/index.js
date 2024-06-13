@@ -73,4 +73,21 @@ function displayForecast(data) {
   }
 }
 
+function saveToHistory(city) {
+  let locations = JSON.parse(localStorage.getItem('locations')) || [];
+  if (!locations.includes(city)) {
+    locations.push(city);
+    localStorage.setItem('locations', JSON.stringify(locations));
+    addCityToHistory(city);
+  }
+}
+
+searchBtn.addEventListener('click', () => {
+  const city = cityInput.value.trim();
+  if (city) {
+    getWeatherData(city);
+    cityInput.value = '';
+  }
+});
+
 init()
