@@ -45,4 +45,32 @@ async function getWeatherData(city) {
   saveToHistory(city);
 }
 
+function displayCurrentWeather(data) {
+  const current = data.list[0];
+  currentWeatherEl.innerHTML = `
+    <h2>${data.city.name} (${new Date(current.dt_txt).toLocaleDateString()})</h2>
+    <img src="http://openweathermap.org/img/wn/${current.weather[0].icon}.png" />
+    <p>Temperature: ${current.main.temp} °C</p>
+    <p>Humidity: ${current.main.humidity}%</p>
+    <p>Wind Speed: ${current.wind.speed} m/s</p>
+  `;
+}
+
+function displayForecast(data) {
+  forecastEl.innerHTML = '<h2>5-Day Forecast:</h2>';
+  const forecastList = data.list.filter(item => item.dt_txt.includes('12:00:00'));
+  for (const forecast of forecastList) {
+    const forecastElChild = document.createElement('div');
+    forecastElChild.classList.add('card', 'm-2', 'p-2');
+    forecastElChild.innerHTML = `
+      <h4>${new Date(forecast.dt_txt).toLocaleDateString()}</h4>
+      <img src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png" />
+      <p>Temperature: ${forecast.main.temp} °C</p>
+      <p>Humidity: ${forecast.main.humidity}%</p>
+      <p>Wind Speed: ${forecast.wind.speed} m/s</p>
+    `;
+    forecastEl.appendChild(forecastElChild);
+  }
+}
+
 init()
