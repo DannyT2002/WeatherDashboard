@@ -16,17 +16,21 @@
       <h1>Weather Forecast</h1>
     </header>
     <main>
-        <div class="row">
-            <div class="col-12 col-lg-3">
-                <h2>Search for a City</h2>
-                <div>
-                    <input id="city"></input>
-                    <a class="btn btn-info">Search</a>
-                    <div id="searched-cities"></div>
-                </div> 
-            </div>
-            <div class="col-12 col-lg-9"></div>
+      <div class="row">
+        <div class="col-12 col-lg-3">
+          <h2>Search for a City</h2>
+          <div>
+            <input id="city" />
+            <a class="btn btn-info" id="searchBtn">Search</a>
+            <div id="searched-cities"></div>
+          </div>
         </div>
+        <div class="col-12 col-lg-9">
+          <div id="current-weather"></div>
+          <div id="forecast"></div>
+        </div>
+      </div>
     </main>
+    <script src="/assets/js/index.js"></script>
   </body>
 </html>
